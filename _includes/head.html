@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" id="{{ site.project.alt_name | downcase  }}">
+<html lang="en-uk" id="{{ site.project.alt_name | downcase  }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,10 +10,8 @@
     
     <title>{% if page.title %}{{ page.title }} // {% endif %}{{ site.project.alt_name }} by {{ site.project.author }}</title>
     
-    <base href="{{ site.url }}">
-    
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    {% stylesheet css/app %}
+    {% capture css_path %}{% asset_path css/app %}{% endcapture %}
+    <link type="text/css" rel="stylesheet" href="{{ css_path | md5_cache_bust }}">
 </head>
 <body>
     {% include nav.html %}
