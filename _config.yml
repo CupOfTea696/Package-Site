@@ -23,21 +23,21 @@ twitter_username: CupOfTea696
 github_username:  CupOfTea696
 
 # Build settings
+exclude: ['build.sh']
 markdown: redcarpet
 redcarpet:
   extensions: ['no_intra_emphasis', 'with_toc_data', 'html_toc', 'strikethrough', 'autolink', 'tables', 'footnotes', 'underline']
 highlighter: pygments
 pygments_options: ['startinline']
-gems:
-  - jekyll-assets
-  - nokogiri
-  - octopress-minify-html
+gems: [jekyll-assets, nokogiri, octopress-minify-html, redcarpet, pygments.rb]
 assets:
-  dirname: assets
-  base_url: assets/
-  cachebust: soft
-  js_compressor: uglifier
-  css_compressor: sass
-  gzip: [ text/css, application/javascript ]
+  compress:
+    css: true
+    js: true
+  prefix: "assets"
+  assets:
+    - "app.css"
+    - "app.js"
+  digest: false
   sources:
     - _assets
