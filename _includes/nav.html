@@ -1,10 +1,16 @@
 <nav class="nav">
     <section class="nav/left">
-        <a href="" class="nav/item">{{ site.project.name }}</a>
+        <div class="nav/item">
+            {{ site.project.name }}
+            <a href="" class="+clickable"></a>
+        </div>
     </section>
     <section class="nav/right">
         {% for item in site.navigation %}
-            <a href="{{ item.url }}" class="nav/item">{{ item.name }}</a>
+            <div class="nav/item" id="nav-item_{{ item.url | slugify }}">
+                {{ item.name }}
+                <a href="{{ item.url }}" class="+clickable"></a>
+            </div>
         {% endfor %}
     </section>
 </nav>
