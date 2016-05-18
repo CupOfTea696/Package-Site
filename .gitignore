@@ -1,8 +1,10 @@
-/vendor
-composer.phar
-composer.lock
 .DS_Store
+._*
+.Spotlight-V100
+.Trashes
 Thumbs.db
-.idea
-.stfolder
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
 .sass-cache
