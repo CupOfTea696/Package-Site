@@ -4,12 +4,12 @@
 
 $spacing-unit: 30px;
 
-$pastelColor: #F7FED2;
-$lightAccentColor: #ADD100;
-$darkAccentColor: #7B920A;
+$pastelColor: {{ pastelColor }};
+$lightAccentColor: {{ lightAccentColor }};
+$darkAccentColor: {{ darkAccentColor }};
 
 $csstyle-part-symbol: '\\/';
-$csstyle-root-id: 'easycfg';
+$csstyle-root-id: '{{ projectName }}';
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
