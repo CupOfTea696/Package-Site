@@ -11,7 +11,8 @@ git pull
 
 # Sync _config.yml
 ###################################################################
-git checkout master -- _config.yml
+git checkout master -- .pkgsite.yml
+mv .pkgsite.yml _config.yml
 
 # Sync the README.md in master to index.md adding jekyll header
 ###################################################################
