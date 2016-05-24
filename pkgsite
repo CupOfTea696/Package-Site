@@ -1,0 +1,64 @@
+#!/bin/bash
+
+## Get the current dir name & derive tmp dir name
+#dirname=${PWD##*/}
+#tmp="../$dirname.tmp"
+#
+### Clone package-site into a tmp dir outside the current dir
+#git clone https://github.com/CupOfTea696/Package-Site $tmp
+#
+### Add the publish script to master
+#cp "$tmp/publish.sh" ./
+#git add publish.sh
+#git commit -m "Add package site publish script."
+#
+### Add Site config to master
+#cp "$tmp/_config.yml" ./.pkgsite.yml
+#git add .pkgsite.yml
+#git commit -m "Add package site config."
+#
+### Create build_site branch
+#git checkout -b build_site
+#find . ! -name '.' ! -name '..' ! -name '.git' -maxdepth 1 -delete
+#cp -r $tmp/* ./
+#rm publish.sh
+#
+### Set CNAME
+#read -p "Do you wish to set a CNAME? [y/n]" yn
+#cname=false
+#case $yn in
+#    [yY] | [yY][Ee][Ss] )
+#        cname=true
+#        ;;
+#esac
+#
+#if [ "$cname" = true ]
+#then
+#    read -p "Please enter a CNAME: " cname
+#    printf "$cname\n" > CNAME
+#else
+#    rm CNAME
+#fi
+
+read -p "Please enter the Pastel Colour: " pastelColor
+read -p "Please enter the Light Accent Colour: " lightAccentColor
+read -p "Please enter the Dark Accent Colour: " darkAccentColor
+
+sed -e s/"{{ pastelColor }}"/$pastelColor/g _assets/css/app.scss > _assets/css/app.scss.tmp
+mv _assets/css/app.scss.tmp _assets/css/app.scss
+sed -e s/"{{ lightAccentColor }}"/$lightAccentColor/g _assets/css/app.scss > _assets/css/app.scss.tmp
+mv _assets/css/app.scss.tmp _assets/css/app.scss
+sed -e s/"{{ darkAccentColor }}"/$darkAccentColor/g _assets/css/app.scss > _assets/css/app.scss.tmp
+mv _assets/css/app.scss.tmp _assets/css/app.scss
+
+## Commit & Push
+#git add .
+#git commit -m init
+#git push origin build_site
+
+## Create gh-pages branch
+#git checkout -b gh-pages
+#find . ! -name '.' ! -name '..' ! -name '.git' -maxdepth 1 -delete
+#
+### Copy .gitignore from build_site
+#git checkout build_site -- .gitignore
